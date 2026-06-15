@@ -364,6 +364,7 @@ try:
         )
         st.plotly_chart(fig4, use_container_width=True)
 
+    st.dataframe(df_recent, use_container_width=True, height=300)
 except Exception as e:
     st.warning(f"Charts unavailable: {e}")
 
@@ -382,7 +383,7 @@ try:
 
     def style_pathogenic(val):
         return "color: #ff4d6d; font-weight: 600" if val else "color: #4a6080"
-        st.dataframe(df_recent, use_container_width=True, height=300)
+        
 
 except Exception as e:
     st.warning(f"Table unavailable: {e}")
