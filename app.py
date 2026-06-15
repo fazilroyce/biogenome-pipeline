@@ -383,12 +383,13 @@ try:
     def style_pathogenic(val):
         return "color: #ff4d6d; font-weight: 600" if val else "color: #4a6080"
 
-    styled = df_recent.style\
-        .applymap(style_risk, subset=["RISK_LEVEL"])\
-        .applymap(style_pathogenic, subset=["IS_PATHOGENIC"])\
-        .format({"QUALITY_SCORE": "{:.1f}", "PROCESSED_AT": lambda x: str(x)[:19]})
-
-    st.dataframe(styled, use_container_width=True, height=300)
+   st.dataframe(
+    df_recent.style.map(style_risk, subset=["RISK_LEVEL"])
+                   .map(style_pathogenic, subset=["IS_PATHOGENIC"])
+                   .format({"QUALITY_SCORE": "{:.1f}", 
+                            "PROCESSED_AT": lambda x: str(x)[:19]}),
+    use_container_width=True, height=300
+)
 
 except Exception as e:
     st.warning(f"Table unavailable: {e}")
