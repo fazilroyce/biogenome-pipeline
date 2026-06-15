@@ -364,7 +364,10 @@ try:
         )
         st.plotly_chart(fig4, use_container_width=True)
 
+    try:
+    df_recent = load_recent(50)
     st.dataframe(df_recent, use_container_width=True, height=300)
+
 except Exception as e:
     st.warning(f"Charts unavailable: {e}")
 
